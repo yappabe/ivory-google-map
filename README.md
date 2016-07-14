@@ -1,5 +1,8 @@
 **Note: This is a copy of [egeloen/ivory-google-map](https://github.com/egeloen/ivory-google-map), the original repository is no longer maintained. We're paranoid, so we didn't fork.**
 
+Differences compared to original repo:
+- API key support
+
 # README
 
 The Ivory Google Map project provides a Google Map integration for your PHP 5.3+ Project. It allows you to manage map,
