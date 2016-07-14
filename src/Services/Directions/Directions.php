@@ -11,6 +11,7 @@
 
 namespace Ivory\GoogleMap\Services\Directions;
 
+use Http\Client\HttpClient;
 use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Exception\DirectionsException;
@@ -18,7 +19,6 @@ use Ivory\GoogleMap\Overlays\EncodedPolyline;
 use Ivory\GoogleMap\Services\AbstractService;
 use Ivory\GoogleMap\Services\Base\Distance;
 use Ivory\GoogleMap\Services\Base\Duration;
-use Widop\HttpAdapter\HttpAdapterInterface;
 
 /**
  * Directions service.
@@ -30,9 +30,9 @@ class Directions extends AbstractService
     /**
      * Creates a directions service.
      *
-     * @param \Widop\HttpAdapter\HttpAdapterInterface $httpAdapter The http adapter.
+     * @param HttpClient $httpAdapter The http adapter.
      */
-    public function __construct(HttpAdapterInterface $httpAdapter)
+    public function __construct(HttpClient $httpAdapter)
     {
         parent::__construct($httpAdapter, 'http://maps.googleapis.com/maps/api/directions');
     }
@@ -66,7 +66,7 @@ class Directions extends AbstractService
         }
 
         $response = $this->send($this->generateUrl($directionsRequest));
-        $directionsResponse = $this->buildDirectionsResponse($this->parse($response->getBody()));
+        $directionsResponse = $this->buildDirectionsResponse($this->parse((string) $response->getBody()));
 
         return $directionsResponse;
     }

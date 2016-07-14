@@ -12,13 +12,13 @@
 namespace Ivory\Tests\GoogleMap\Services\Directions;
 
 use \DateTime;
+use Http\Adapter\Guzzle6\Client;
 use Ivory\GoogleMap\Services\Directions\Directions;
 use Ivory\GoogleMap\Services\Directions\DirectionsRequest;
 use Ivory\GoogleMap\Services\Directions\DirectionsStatus;
 use Ivory\GoogleMap\Services\Directions\DirectionsWaypoint;
 use Ivory\GoogleMap\Services\Base\TravelMode;
 use Ivory\GoogleMap\Services\Base\UnitSystem;
-use Widop\HttpAdapter\CurlHttpAdapter;
 
 /**
  * Directions test.
@@ -37,7 +37,7 @@ class DirectionsTest extends \PHPUnit_Framework_TestCase
     {
         sleep(5);
 
-        $this->directions = new Directions(new CurlHttpAdapter());
+        $this->directions = new Directions(new Client());
     }
 
     /**
@@ -273,10 +273,10 @@ class DirectionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testRouteWithInvalidResult()
     {
-        $httpAdapterMock = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
+        $httpAdapterMock = $this->getMock('Http\Client\HttpClient');
         $httpAdapterMock
             ->expects($this->once())
-            ->method('getContent')
+            ->method('sendRequest')
             ->will($this->returnValue(null));
 
         $this->directions = new Directions($httpAdapterMock);

@@ -11,11 +11,11 @@
 
 namespace Ivory\GoogleMap\Services\DistanceMatrix;
 
+use Http\Client\HttpClient;
 use Ivory\GoogleMap\Services\AbstractService;
 use Ivory\GoogleMap\Exception\DistanceMatrixException;
 use Ivory\GoogleMap\Services\Base\Distance;
 use Ivory\GoogleMap\Services\Base\Duration;
-use Widop\HttpAdapter\HttpAdapterInterface;
 
 /**
  * DistanceMatrix service.
@@ -28,9 +28,9 @@ class DistanceMatrix extends AbstractService
     /**
      * Creates a distance matrix service.
      *
-     * @param \Widop\HttpAdapter\HttpAdapterInterface $httpAdapter The http adapter.
+     * @param HttpClient $httpAdapter The http adapter.
      */
-    public function __construct(HttpAdapterInterface $httpAdapter)
+    public function __construct(HttpClient $httpAdapter)
     {
         parent::__construct($httpAdapter, 'http://maps.googleapis.com/maps/api/distancematrix');
     }
@@ -64,7 +64,7 @@ class DistanceMatrix extends AbstractService
         }
 
         $response = $this->send($this->generateUrl($distanceMatrixRequest));
-        $distanceMatrixResponse = $this->buildDistanceMatrixResponse($this->parse($response->getBody()));
+        $distanceMatrixResponse = $this->buildDistanceMatrixResponse($this->parse((string) $response->getBody()));
 
         return $distanceMatrixResponse;
     }

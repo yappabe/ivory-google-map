@@ -11,9 +11,11 @@
 
 namespace Ivory\GoogleMap\Services;
 
+use GuzzleHttp\Psr7\Request;
+use Http\Client\HttpClient;
 use Ivory\GoogleMap\Exception\ServiceException;
 use Ivory\GoogleMap\Services\Utils\XmlParser;
-use Widop\HttpAdapter\HttpAdapterInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Abstract class for accesing google API.
@@ -22,7 +24,9 @@ use Widop\HttpAdapter\HttpAdapterInterface;
  */
 abstract class AbstractService
 {
-    /** @var \Widop\HttpAdapter\HttpAdapterInterface */
+    /**
+     * @var HttpClient
+     */
     protected $httpAdapter;
 
     /** @var string */
@@ -43,15 +47,16 @@ abstract class AbstractService
     /**
      * Creates a service.
      *
-     * @param \Widop\HttpAdapter\HttpAdapterInterface   $httpAdapter     The http adapter.
-     * @param string                                    $url             The service url.
-     * @param boolean                                   $https           TRUE if the service uses HTTPS else FALSE.
-     * @param string                                    $format          Format used by the service.
-     * @param \Ivory\GoogleMap\Services\Utils\XmlParser $xmlParser       The xml parser.
+     * @param HttpClient $httpAdapter The http adapter.
+     * @param string $url The service url.
+     * @param boolean $https TRUE if the service uses HTTPS else FALSE.
+     * @param string $format Format used by the service.
+     * @param \Ivory\GoogleMap\Services\Utils\XmlParser $xmlParser The xml parser.
      * @param \Ivory\GoogleMap\Services\BusinessAccount $businessAccount The business account.
+     * @throws ServiceException
      */
     public function __construct(
-        HttpAdapterInterface $httpAdapter,
+        HttpClient $httpAdapter,
         $url,
         $https = false,
         $format = 'json',
@@ -73,7 +78,7 @@ abstract class AbstractService
     /**
      * Gets the http adapter.
      *
-     * @return \Widop\HttpAdapter\HttpAdapterInterface The http adapter.
+     * @return HttpClient The http adapter.
      */
     public function getHttpAdapter()
     {
@@ -83,9 +88,9 @@ abstract class AbstractService
     /**
      * Sets the http adapter.
      *
-     * @param \Widop\HttpAdapter\HttpAdapterInterface $httpAdapter The http adapter.
+     * @param HttpClient $httpAdapter The http adapter.
      */
-    public function setHttpAdapter(HttpAdapterInterface $httpAdapter)
+    public function setHttpAdapter(HttpClient $httpAdapter)
     {
         $this->httpAdapter = $httpAdapter;
     }
@@ -250,7 +255,10 @@ abstract class AbstractService
      */
     protected function send($url)
     {
-        $response = $this->httpAdapter->getContent($url);
+        $request = new Request('GET', $url);
+
+        /** @var ResponseInterface $response */
+        $response = $this->httpAdapter->sendRequest($request);
 
         if ($response === null) {
             throw ServiceException::invalidServiceResult();

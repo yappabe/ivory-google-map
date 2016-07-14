@@ -64,7 +64,7 @@ function load_ivory_google_map_api () { google.load("maps", "3", {"other_params"
 <script type="text/javascript" src="//www.google.com/jsapi?callback=load_ivory_google_map_api"></script>
 
 EOF;
-
+        
         $this->assertSame($expected, $this->apiHelper->render());
     }
 

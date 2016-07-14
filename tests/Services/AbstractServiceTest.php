@@ -11,7 +11,7 @@
 
 namespace Ivory\Tests\GoogleMap\Services;
 
-use Ivory\GoogleMap\Services\BusinessAccount;
+use Http\Client\HttpClient;
 
 /**
  * Abstract service test.
@@ -23,7 +23,7 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
     /** @var \Ivory\GoogleMap\Services\AbstractService */
     protected $service;
 
-    /** @var \Widop\HttpAdapter\HttpAdapterInterface */
+    /** @var HttpClient */
     protected $httpAdapter;
 
     /**
@@ -31,7 +31,7 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->httpAdapter = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
+        $this->httpAdapter = $this->getMock('Http\Client\HttpClient');
 
         $this->service = $this->getMockBuilder('Ivory\GoogleMap\Services\AbstractService')
             ->setConstructorArgs(array($this->httpAdapter, 'http://foo'))
@@ -81,7 +81,7 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testHttpAdapter()
     {
-        $httpAdapter = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
+        $httpAdapter = $this->getMock('Http\Client\HttpClient');
         $this->service->setHttpAdapter($httpAdapter);
 
         $this->assertSame($httpAdapter, $this->service->getHttpAdapter());

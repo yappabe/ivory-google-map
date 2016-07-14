@@ -11,6 +11,7 @@
 
 namespace Ivory\Tests\GoogleMap\Services\DistanceMatrix;
 
+use Http\Adapter\Guzzle6\Client;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixElementStatus;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixRequest;
@@ -18,7 +19,6 @@ use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixStatus;
 use Ivory\GoogleMap\Services\Base\TravelMode;
 use Ivory\GoogleMap\Services\Base\UnitSystem;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrix;
-use Widop\HttpAdapter\CurlHttpAdapter;
 
 /**
  * Distance matrix test.
@@ -35,7 +35,7 @@ class DistanceMatrixTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->service = new DistanceMatrix(new CurlHttpAdapter());
+        $this->service = new DistanceMatrix(new Client());
     }
 
     /**
@@ -235,10 +235,10 @@ class DistanceMatrixTest extends \PHPUnit_Framework_TestCase
      */
     public function testProcessWithInvalidResult()
     {
-        $httpAdapterMock = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
+        $httpAdapterMock = $this->getMock('Http\Client\HttpClient');
         $httpAdapterMock
             ->expects($this->once())
-            ->method('getContent')
+            ->method('sendRequest')
             ->will($this->returnValue(null));
 
         $this->service = new DistanceMatrix($httpAdapterMock);

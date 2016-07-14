@@ -15,12 +15,14 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
-        "widop/http-adapter": "~1.1.0",
         "willdurand/geocoder": "~2.0",
-        "satooshi/php-coveralls": "~0.6"
+        "satooshi/php-coveralls": "~0.6",
+        "php-http/httplug": "^1.0",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "suggest": {
-        "widop/http-adapter": "Allows to use services",
+        "php-http/httplug": "Allows to use services",
+        "php-http/guzzle6-adapter": "Allows to use services",
         "willdurand/geocoder": "Allows to use geocoding service"
     },
     "autoload": {
