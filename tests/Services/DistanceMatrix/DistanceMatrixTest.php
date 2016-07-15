@@ -12,6 +12,8 @@
 namespace Ivory\Tests\GoogleMap\Services\DistanceMatrix;
 
 use Http\Adapter\Guzzle6\Client;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory\GuzzleMessageFactory;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixElementStatus;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixRequest;
@@ -35,7 +37,7 @@ class DistanceMatrixTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->service = new DistanceMatrix(new Client());
+        $this->service = new DistanceMatrix(new Client(), new GuzzleMessageFactory());
     }
 
     /**
@@ -227,22 +229,6 @@ class DistanceMatrixTest extends \PHPUnit_Framework_TestCase
     public function testProcessWithInvalidRequest()
     {
         $this->service->process(new DistanceMatrixRequest());
-    }
-
-    /**
-     * @expectedException \Ivory\GoogleMap\Exception\ServiceException
-     * @expectedExceptionMessage The service result is not valid.
-     */
-    public function testProcessWithInvalidResult()
-    {
-        $httpAdapterMock = $this->getMock('Http\Client\HttpClient');
-        $httpAdapterMock
-            ->expects($this->once())
-            ->method('sendRequest')
-            ->will($this->returnValue(null));
-
-        $this->service = new DistanceMatrix($httpAdapterMock);
-        $this->service->process(array('Vancouver BC'), array('San Francisco'));
     }
 
     /**

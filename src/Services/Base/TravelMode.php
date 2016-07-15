@@ -31,7 +31,6 @@ class TravelMode
      */
     final private function __construct()
     {
-
     }
 
     /**

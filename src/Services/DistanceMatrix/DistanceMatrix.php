@@ -12,6 +12,7 @@
 namespace Ivory\GoogleMap\Services\DistanceMatrix;
 
 use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Services\AbstractService;
 use Ivory\GoogleMap\Exception\DistanceMatrixException;
 use Ivory\GoogleMap\Services\Base\Distance;
@@ -28,11 +29,12 @@ class DistanceMatrix extends AbstractService
     /**
      * Creates a distance matrix service.
      *
-     * @param HttpClient $httpAdapter The http adapter.
+     * @param HttpClient $client
+     * @param MessageFactory $messageFactory The message factory.
      */
-    public function __construct(HttpClient $httpAdapter)
+    public function __construct(HttpClient $client, MessageFactory $messageFactory)
     {
-        parent::__construct($httpAdapter, 'http://maps.googleapis.com/maps/api/distancematrix');
+        parent::__construct($client, $messageFactory, 'http://maps.googleapis.com/maps/api/distancematrix');
     }
 
     /**

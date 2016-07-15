@@ -18,7 +18,7 @@ use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixResponseRow;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class DirectionsResponseRowTest extends \PHPUnit_Framework_TestCase
+class DistanceMatrixResponseRowTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixResponse */
     protected $distanceMatrixResponseRow;

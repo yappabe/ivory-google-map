@@ -70,7 +70,6 @@ class DefaultMarkerClusterHelper extends AbstractMarkerClusterHelper
      */
     public function render(MarkerCluster $markerCluster, Map $map)
     {
-
     }
 
     /**
@@ -78,7 +77,6 @@ class DefaultMarkerClusterHelper extends AbstractMarkerClusterHelper
      */
     public function renderLibraries(MarkerCluster $markerCluster, Map $map)
     {
-
     }
 
     /**

@@ -347,7 +347,7 @@ class DirectionsRequest
      *
      * @param \DateTime $arrivalTime The directions arrival time.
      */
-    public function  setArrivalTime(DateTime $arrivalTime = null)
+    public function setArrivalTime(DateTime $arrivalTime = null)
     {
         $this->arrivalTime = $arrivalTime;
     }

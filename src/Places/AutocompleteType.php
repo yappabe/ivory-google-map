@@ -30,7 +30,6 @@ class AutocompleteType
      */
     final private function __construct()
     {
-
     }
 
     /**

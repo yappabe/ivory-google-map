@@ -30,7 +30,6 @@ class ZoomControlStyle
      */
     final private function __construct()
     {
-
     }
 
     /**

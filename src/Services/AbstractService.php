@@ -11,10 +11,11 @@
 
 namespace Ivory\GoogleMap\Services;
 
-use GuzzleHttp\Psr7\Request;
 use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Exception\ServiceException;
 use Ivory\GoogleMap\Services\Utils\XmlParser;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -27,7 +28,12 @@ abstract class AbstractService
     /**
      * @var HttpClient
      */
-    protected $httpAdapter;
+    protected $client;
+
+    /**
+     * @var MessageFactory
+     */
+    protected $messageFactory;
 
     /** @var string */
     protected $url;
@@ -47,7 +53,8 @@ abstract class AbstractService
     /**
      * Creates a service.
      *
-     * @param HttpClient $httpAdapter The http adapter.
+     * @param HttpClient $client
+     * @param MessageFactory $messageFactory The message factory.
      * @param string $url The service url.
      * @param boolean $https TRUE if the service uses HTTPS else FALSE.
      * @param string $format Format used by the service.
@@ -56,7 +63,8 @@ abstract class AbstractService
      * @throws ServiceException
      */
     public function __construct(
-        HttpClient $httpAdapter,
+        HttpClient $client,
+        MessageFactory $messageFactory,
         $url,
         $https = false,
         $format = 'json',
@@ -67,7 +75,8 @@ abstract class AbstractService
             $xmlParser = new XmlParser();
         }
 
-        $this->setHttpAdapter($httpAdapter);
+        $this->setClient($client);
+        $this->setMessageFactory($messageFactory);
         $this->setUrl($url);
         $this->setHttps($https);
         $this->setFormat($format);
@@ -76,23 +85,22 @@ abstract class AbstractService
     }
 
     /**
-     * Gets the http adapter.
-     *
-     * @return HttpClient The http adapter.
+     * Gets the message factory.
+     * @return MessageFactory
      */
-    public function getHttpAdapter()
+    public function getMessageFactory()
     {
-        return $this->httpAdapter;
+        return $this->messageFactory;
     }
 
     /**
-     * Sets the http adapter.
+     * Sets the message factory.
      *
-     * @param HttpClient $httpAdapter The http adapter.
+     * @param MessageFactory $messageFactory The message factory.
      */
-    public function setHttpAdapter(HttpClient $httpAdapter)
+    public function setMessageFactory(MessageFactory $messageFactory)
     {
-        $this->httpAdapter = $httpAdapter;
+        $this->messageFactory = $messageFactory;
     }
 
     /**
@@ -248,22 +256,19 @@ abstract class AbstractService
      *
      * @param string $url The service url.
      *
-     * @return \Widop\HttpAdapter\HttpResponse The response.
+     * @return ResponseInterface
      *
      * @throws \Ivory\GoogleMap\Exception\ServiceException If the response is null.
      * @throws \Ivory\GoogleMap\Exception\ServiceException If the response has an error 4XX or 5XX.
      */
     protected function send($url)
     {
-        $request = new Request('GET', $url);
+        /** @var RequestInterface $request */
+        $request = $this->messageFactory->createRequest('GET', $url);
 
         /** @var ResponseInterface $response */
-        $response = $this->httpAdapter->sendRequest($request);
-
-        if ($response === null) {
-            throw ServiceException::invalidServiceResult();
-        }
-
+        $response = $this->client->sendRequest($request);
+        
         $statusCode = (string) $response->getStatusCode();
 
         if ($statusCode[0] === '4' || $statusCode[0] === '5') {
@@ -271,5 +276,13 @@ abstract class AbstractService
         }
 
         return $response;
+    }
+
+    /**
+     * @param HttpClient $client
+     */
+    private function setClient(HttpClient $client)
+    {
+        $this->client = $client;
     }
 }

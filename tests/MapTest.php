@@ -72,7 +72,7 @@ class MapTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($this->map->getBound()->getSouthWest());
         $this->assertEmpty($this->map->getBound()->getExtends());
 
-        $this->assertSame(array('mapTypeId' => 'roadmap','zoom' => 3), $this->map->getMapOptions());
+        $this->assertSame(array('mapTypeId' => 'roadmap', 'zoom' => 3), $this->map->getMapOptions());
         $this->assertSame(array('width' => '300px', 'height' => '300px'), $this->map->getStylesheetOptions());
 
         $this->assertFalse($this->map->hasMapTypeControl());

@@ -31,7 +31,6 @@ class MapTypeId
      */
     final private function __construct()
     {
-
     }
 
     /**

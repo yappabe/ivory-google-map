@@ -29,7 +29,6 @@ class Animation
      */
     final private function __construct()
     {
-
     }
 
     /**

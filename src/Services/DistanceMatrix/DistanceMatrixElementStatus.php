@@ -31,7 +31,6 @@ class DistanceMatrixElementStatus
      */
     final private function __construct()
     {
-
     }
 
     /**

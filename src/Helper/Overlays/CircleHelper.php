@@ -22,7 +22,7 @@ use Ivory\GoogleMap\Overlays\Circle;
  */
 class CircleHelper extends AbstractHelper
 {
-   /**
+    /**
      * Renders a circle.
      *
      * @param \Ivory\GoogleMap\Overlays\Circle $circle The circle.

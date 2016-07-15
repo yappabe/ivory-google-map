@@ -12,6 +12,7 @@
 namespace Ivory\GoogleMap\Services\Directions;
 
 use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Exception\DirectionsException;
@@ -29,12 +30,12 @@ class Directions extends AbstractService
 {
     /**
      * Creates a directions service.
-     *
-     * @param HttpClient $httpAdapter The http adapter.
+     * @param HttpClient $client
+     * @param MessageFactory $messageFactory
      */
-    public function __construct(HttpClient $httpAdapter)
+    public function __construct(HttpClient $client, MessageFactory $messageFactory)
     {
-        parent::__construct($httpAdapter, 'http://maps.googleapis.com/maps/api/directions');
+        parent::__construct($client, $messageFactory, 'http://maps.googleapis.com/maps/api/directions');
     }
 
     /**

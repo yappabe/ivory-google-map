@@ -32,7 +32,6 @@ class MouseEvent
      */
     final private function __construct()
     {
-
     }
 
     /**

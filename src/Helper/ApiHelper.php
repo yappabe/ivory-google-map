@@ -64,8 +64,7 @@ class ApiHelper extends AbstractHelper
         $callback = null,
         $sensor = false,
         $api_key = null
-    )
-    {
+    ) {
         $otherParameters = array();
 
         if (!empty($libraries)) {
