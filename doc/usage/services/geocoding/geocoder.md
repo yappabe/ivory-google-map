@@ -57,4 +57,4 @@ If you use the standard Geocoder components, I recommand you to directly read th
 
 The specific Ivory Google Map Geocoder has been added to allow you to geocode a very advanced request & use the
 response to directly build your overlays. If you are interested about this geocoder, the documentation is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/geocoding/ivory_geocoder.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/geocoding/ivory_geocoder.md).

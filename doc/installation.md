@@ -40,13 +40,12 @@ If you want to use Geocoding stuff, you will need [Geocoder](http://github.com/w
 }
 ```
 
-If you want to use Directions or Distance Matrix stuff, you will need an
-[http adapter](http://github.com/widop/http-adapter):
+If you want to use Directions or Distance Matrix stuff, you will need a psr7 compatible client:
 
 ```
 {
     "require": {
-        "widop/http-adapter": "1.0.*"
+        "php-http/guzzle6-adapter": "~1.0"
     }
 }
 ```
