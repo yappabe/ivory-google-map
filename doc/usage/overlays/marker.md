@@ -64,7 +64,7 @@ $marker->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
 ### Configure marker image
 
 The complete marker image configuration is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/marker_image.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/marker_image.md).
 
 ``` php
 use Ivory\GoogleMap\Overlays\Marker;
@@ -96,7 +96,7 @@ $marker->setShadow('http://maps.gstatic.com/mapfiles/markers/marker.png');
 ### Configure marker image
 
 The complete marker image configuration is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/marker_image.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/marker_image.md).
 
 ``` php
 use Ivory\GoogleMap\Overlays\Marker;
@@ -110,7 +110,7 @@ $marker->setShadow($markerImage);
 ## Configure marker shape
 
 The complete marker shape configuration is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/marker_shape.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/marker_shape.md).
 
 ## Add your marker to the map
 

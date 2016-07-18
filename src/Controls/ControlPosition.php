@@ -39,7 +39,6 @@ class ControlPosition
      */
     final private function __construct()
     {
-
     }
 
     /**

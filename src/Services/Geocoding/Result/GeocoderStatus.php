@@ -34,7 +34,6 @@ class GeocoderStatus
      */
     final private function __construct()
     {
-
     }
 
     /**

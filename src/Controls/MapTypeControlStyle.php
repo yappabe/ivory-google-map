@@ -30,7 +30,6 @@ class MapTypeControlStyle
      */
     final private function __construct()
     {
-
     }
 
     /**

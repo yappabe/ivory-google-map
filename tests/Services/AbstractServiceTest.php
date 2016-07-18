@@ -11,7 +11,8 @@
 
 namespace Ivory\Tests\GoogleMap\Services;
 
-use Ivory\GoogleMap\Services\BusinessAccount;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 
 /**
  * Abstract service test.
@@ -23,18 +24,22 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
     /** @var \Ivory\GoogleMap\Services\AbstractService */
     protected $service;
 
-    /** @var \Widop\HttpAdapter\HttpAdapterInterface */
-    protected $httpAdapter;
+    /** @var MessageFactory */
+    protected $messageFactory;
+
+    /** @var HttpClient */
+    protected $client;
 
     /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
-        $this->httpAdapter = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
+        $this->messageFactory = $this->getMock('Http\Message\MessageFactory');
+        $this->client = $this->getMock('Http\Client\HttpClient');
 
         $this->service = $this->getMockBuilder('Ivory\GoogleMap\Services\AbstractService')
-            ->setConstructorArgs(array($this->httpAdapter, 'http://foo'))
+            ->setConstructorArgs(array($this->client, $this->messageFactory, 'http://foo'))
             ->getMockForAbstractClass();
     }
 
@@ -43,13 +48,13 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        unset($this->httpAdapter);
+        unset($this->messageFactory);
         unset($this->service);
     }
 
     public function testDefaultState()
     {
-        $this->assertSame($this->httpAdapter, $this->service->getHttpAdapter());
+        $this->assertSame($this->messageFactory, $this->service->getMessageFactory());
         $this->assertSame('http://foo', $this->service->getUrl());
         $this->assertFalse($this->service->isHttps());
         $this->assertSame('json', $this->service->getFormat());
@@ -67,10 +72,10 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->service = $this->getMockBuilder('Ivory\GoogleMap\Services\AbstractService')
-            ->setConstructorArgs(array($this->httpAdapter, 'http://bar', true, 'xml', $xmlParser, $businessAccount))
+            ->setConstructorArgs(array($this->client, $this->messageFactory, 'http://bar', true, 'xml', $xmlParser, $businessAccount))
             ->getMockForAbstractClass();
 
-        $this->assertSame($this->httpAdapter, $this->service->getHttpAdapter());
+        $this->assertSame($this->messageFactory, $this->service->getMessageFactory());
         $this->assertSame('https://bar', $this->service->getUrl());
         $this->assertTrue($this->service->isHttps());
         $this->assertSame('xml', $this->service->getFormat());
@@ -79,12 +84,12 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($businessAccount, $this->service->getBusinessAccount());
     }
 
-    public function testHttpAdapter()
+    public function testMessageFactory()
     {
-        $httpAdapter = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
-        $this->service->setHttpAdapter($httpAdapter);
+        $messageFactory = $this->getMock('Http\Message\MessageFactory');
+        $this->service->setMessageFactory($messageFactory);
 
-        $this->assertSame($httpAdapter, $this->service->getHttpAdapter());
+        $this->assertSame($messageFactory, $this->service->getMessageFactory());
     }
 
     public function testHttps()

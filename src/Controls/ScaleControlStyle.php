@@ -28,7 +28,6 @@ class ScaleControlStyle
      */
     final private function __construct()
     {
-
     }
 
     /**

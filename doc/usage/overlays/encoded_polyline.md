@@ -1,6 +1,6 @@
 # Encoded Polyline
 
-The Encoded Polyline class defines a [Polyline](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/polyline.md)
+The Encoded Polyline class defines a [Polyline](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/polyline.md)
 which has been encoded using the algorithm described
 [here](http://code.google.com/apis/maps/documentation/utilities/polylinealgorithm.html).
 

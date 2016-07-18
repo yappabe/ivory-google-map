@@ -35,7 +35,6 @@ class DirectionsStatus
      */
     final private function __construct()
     {
-
     }
 
     /**

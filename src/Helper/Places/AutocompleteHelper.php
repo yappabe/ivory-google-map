@@ -45,8 +45,7 @@ class AutocompleteHelper extends AbstractHelper
         ApiHelper $apiHelper = null,
         CoordinateHelper $coordinateHelper = null,
         BoundHelper $boundHelper = null
-    )
-    {
+    ) {
         parent::__construct();
 
         if ($apiHelper === null) {

@@ -1,9 +1,9 @@
 # Info box
 
 Info box displays content in a floating window above the map. Basically, it is the same as an
-[info window](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/info_window.md) but through a
+[info window](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/info_window.md) but through a
 different implementation. The Ivory Google Map library allows you to easily use this implementation by simply replacing
-the info window helper & registering a new [extension helper](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/helper/extension.md).
+the info window helper & registering a new [extension helper](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/helper/extension.md).
 
 So, on the map side, nothing change, you can still use an `InfoWindow`:
 

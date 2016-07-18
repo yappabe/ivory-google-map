@@ -150,9 +150,9 @@ class GeocoderProviderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(GeocoderStatus::OK, $response->getStatus());
     }
 
-    public function testGeocdedDataWithIp()
+    public function testGeocodedDataWithIp()
     {
-        $response = $this->geocoderProvider->getGeocodedData('111.111.111.111');
+        $response = $this->geocoderProvider->getGeocodedData('4.2.2.2');
 
         $this->assertInstanceOf('Ivory\GoogleMap\Services\Geocoding\Result\GeocoderResponse', $response);
 

@@ -9,19 +9,19 @@ by the Google Maps API, and consists of rows containing duration and distance va
 
 This service does not return detailed route information. Route information can be obtained by passing the desired
 single origin and destination to the
-[Directions API](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/directions/directions.md).
+[Directions API](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/directions/directions.md).
 
 ## Request the distance matrix service
 
 ``` php
-use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrix;
-use Widop\HttpAdapter\CurlHttpAdapter;
+$client = new \Http\Adapter\Guzzle6\Client();
+$messageFactory = new \Http\Message\MessageFactory\GuzzleMessageFactory();
 
-$distanceMatrix = new DistanceMatrix(new CurlHttpAdapter());
+$distanceMatrix = new DistanceMatrix($client, $messageFactory);
 ```
 
 If you want to use it with a business account, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/business_account.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/business_account.md).
 
 ## Processes a request
 
@@ -30,7 +30,7 @@ $response = $distanceMatrix->process(array('Vancouver BC'), array('San Francisco
 ```
 
 The distance matrix allows you to proceess a much more advanced request. If you want to lear more, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/distance_matrix/distance_matrix_request.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/distance_matrix/distance_matrix_request.md).
 
 ## Distance matrix response
 

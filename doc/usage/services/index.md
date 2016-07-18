@@ -1,8 +1,8 @@
 # Google Map API Services
 
- 1. [Directions API](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/directions/directions.md)
+ 1. [Directions API](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/directions/directions.md)
  2. Distance Matrix API
  3. Elevation API
- 4. [Geocoding API](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/geocoding/geocoder.md)
+ 4. [Geocoding API](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/geocoding/geocoder.md)
  5. Places API
- 6. [Business Account](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/business_account.md)
+ 6. [Business Account](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/business_account.md)

@@ -18,7 +18,7 @@ use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixElementStatus;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class DirectionsMatrixElementStatusTest extends \PHPUnit_Framework_TestCase
+class DistanceMatrixElementStatusTest extends \PHPUnit_Framework_TestCase
 {
     public function testDistanceMatrixElementStatus()
     {

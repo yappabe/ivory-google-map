@@ -23,7 +23,7 @@ use Ivory\GoogleMap\Overlays\InfoWindow;
  */
 class InfoWindowHelper extends AbstractHelper
 {
-   /**
+    /**
      * Renders an info window.
      *
      * @param \Ivory\GoogleMap\Overlays\InfoWindow $infoWindow     The info window.

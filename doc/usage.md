@@ -21,7 +21,7 @@ zoom of 3 & using the default controls.
 ## Configure your map
 
 Now, you have a map, you can configure it easily. The complete map configuration is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/map.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/map.md).
 
 ### Configure overlays
 
@@ -29,16 +29,16 @@ Overlays are objects on the map that are tied to latitude/longitude coordinates,
 the map. Overlays reflect objects that you "add" to the map to designate points, lines, areas, or collections of
 objects.
 
- 1.  [Marker](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/marker.md)
- 2.  [Info window](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/info_window.md)
- 3.  [Info box](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/info_box.md)
- 4.  [Polyline](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/polyline.md)
- 5.  [Encoded Polyline](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md)
- 6.  [Polygon](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/polygon.md)
- 7.  [Rectangle](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/rectangle.md)
- 8.  [Circle](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/circle.md)
- 9.  [Ground overlay](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/ground_overlay.md)
- 10. [Marker cluster](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/marker_cluster.md)
+ 1.  [Marker](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/marker.md)
+ 2.  [Info window](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/info_window.md)
+ 3.  [Info box](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/info_box.md)
+ 4.  [Polyline](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/polyline.md)
+ 5.  [Encoded Polyline](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md)
+ 6.  [Polygon](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/polygon.md)
+ 7.  [Rectangle](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/rectangle.md)
+ 8.  [Circle](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/circle.md)
+ 9.  [Ground overlay](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/ground_overlay.md)
+ 10. [Marker cluster](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/marker_cluster.md)
 
 ### Configure controls
 
@@ -46,18 +46,18 @@ The maps on Google Maps contain UI elements for allowing user interaction throug
 ``controls`` and you can include variations of these controls in your Google Maps API application. Alternatively, you
 can do nothing and let the Google Maps API handle all control behavior.
 
- 1. [Map type control](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/map_type.md)
- 2. [Overview](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/overview.md)
- 3. [Pan](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/pan.md)
- 4. [Rotate](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/rotate.md)
- 5. [Scale](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/scale.md)
- 6. [Street view](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/street_view.md)
- 7. [Zoom](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/controls/zoom.md)
+ 1. [Map type control](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/map_type.md)
+ 2. [Overview](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/overview.md)
+ 3. [Pan](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/pan.md)
+ 4. [Rotate](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/rotate.md)
+ 5. [Scale](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/scale.md)
+ 6. [Street view](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/street_view.md)
+ 7. [Zoom](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/controls/zoom.md)
 
 ### Configure events
 
 The complete events configuration is available
-[here](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/events.md).
+[here](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/events.md).
 
 ### Configure additional libraries
 
@@ -109,11 +109,11 @@ This function renders an html javascript block with all code needed for displayi
 ```
 
 The generated code is organized to be reusable in the client side. If you want to learn more, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/helper/container.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/helper/container.md).
 
 Additionally, the library allows you to add/render your own javascript libraires and append some code just before or
 after the generated code through extensions. If you want to learn more about that, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/helper/extension.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/helper/extension.md).
 
 ### Render the CSS (Optional)
 

@@ -12,13 +12,17 @@
 namespace Ivory\Tests\GoogleMap\Services\Directions;
 
 use \DateTime;
+use GuzzleHttp\Psr7\Response;
+use Http\Adapter\Guzzle6\Client;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory\GuzzleMessageFactory;
+use Ivory\GoogleMap\Exception\ServiceException;
 use Ivory\GoogleMap\Services\Directions\Directions;
 use Ivory\GoogleMap\Services\Directions\DirectionsRequest;
 use Ivory\GoogleMap\Services\Directions\DirectionsStatus;
 use Ivory\GoogleMap\Services\Directions\DirectionsWaypoint;
 use Ivory\GoogleMap\Services\Base\TravelMode;
 use Ivory\GoogleMap\Services\Base\UnitSystem;
-use Widop\HttpAdapter\CurlHttpAdapter;
 
 /**
  * Directions test.
@@ -37,7 +41,7 @@ class DirectionsTest extends \PHPUnit_Framework_TestCase
     {
         sleep(5);
 
-        $this->directions = new Directions(new CurlHttpAdapter());
+        $this->directions = new Directions(new Client(), new GuzzleMessageFactory());
     }
 
     /**
@@ -269,17 +273,17 @@ class DirectionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Ivory\GoogleMap\Exception\ServiceException
-     * @expectedExceptionMessage The service result is not valid.
+     * @expectedExceptionMessageRegExp /^An error occured while fetching/
      */
     public function testRouteWithInvalidResult()
     {
-        $httpAdapterMock = $this->getMock('Widop\HttpAdapter\HttpAdapterInterface');
-        $httpAdapterMock
+        $clientMock = $this->getMock(HttpClient::class);
+        $clientMock
             ->expects($this->once())
-            ->method('getContent')
-            ->will($this->returnValue(null));
+            ->method('sendRequest')
+            ->will($this->returnValue(new Response(500)));
 
-        $this->directions = new Directions($httpAdapterMock);
+        $this->directions = new Directions($clientMock, new GuzzleMessageFactory());
         $this->directions->route('Lille', 'Paris');
     }
 }

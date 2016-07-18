@@ -8,7 +8,7 @@ The library allows you to request the google map geocoding API by two different 
 simple address (IP or street) or an advanced geocoder request.
 
 If you want to use it with a business account, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/business_account.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/business_account.md).
 
 ### Simple address
 
@@ -29,7 +29,7 @@ $response = $geocoder->geocode('1600 Amphitheatre Parkway, Mountain View, CA');
 ### Advanced geocoder request
 
 If you want to build an advanced request, read this specific
-[documenation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/geocoding/geocoder_request.md).
+[documenation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/geocoding/geocoder_request.md).
 
 ## Geocoder response
 

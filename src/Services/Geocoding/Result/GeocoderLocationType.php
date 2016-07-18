@@ -31,7 +31,6 @@ class GeocoderLocationType
      */
     final private function __construct()
     {
-
     }
 
     /**

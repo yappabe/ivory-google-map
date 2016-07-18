@@ -315,7 +315,7 @@ class MapHelperTest extends \PHPUnit_Framework_TestCase
     {
         $map = new Map();
         $map->setHtmlContainerId('html_container_id');
-        $map->setStylesheetOptions(array('width' => '200px','height' => '100px', 'option1' => 'value1'));
+        $map->setStylesheetOptions(array('width' => '200px', 'height' => '100px', 'option1' => 'value1'));
 
         $expected = <<<EOF
 <style type="text/css">

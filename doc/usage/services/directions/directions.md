@@ -11,14 +11,14 @@ or as latitude/longitude coordinates. The Directions API can return multi-part d
 ## Request the directions service
 
 ``` php
-use Ivory\GoogleMap\Services\Directions\Directions;
-use Widop\HttpAdapter\CurlHttpAdapter;
+$client = new \Http\Adapter\Guzzle6\Client();
+$messageFactory = new \Http\Message\MessageFactory\GuzzleMessageFactory();
 
-$directions = new Directions(new CurlHttpAdapter());
+$directions = new Directions($client, $messageFactory);
 ```
 
 If you want to use it with a business account, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/business_account.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/business_account.md).
 
 ## Request a direction
 
@@ -27,7 +27,7 @@ $response = $directions->route('New York', 'Washington');
 ```
 
 The directions service allows you to route a much more advance request. If you want to learn more, you can read this
-[documentation](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/services/directions/directions_request.md).
+[documentation](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/services/directions/directions_request.md).
 
 ## Directions response
 
@@ -99,7 +99,7 @@ $legs = $route->getLegs();
 
 ### Overview polyline
 
-The overview polyline is an [encoded polyline](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md)
+The overview polyline is an [encoded polyline](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md)
 which represents the route.
 
 ``` php
@@ -291,7 +291,7 @@ $instructions = $step->getInstructions();
 
 ### Encoded polyline
 
-It represents the step as an [encoded polyline](http://github.com/egeloen/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md).
+It represents the step as an [encoded polyline](https://github.com/yappabe/ivory-google-map/blob/master/doc/usage/overlays/encoded_polyline.md).
 
 ``` php
 // Gets the encoded polyline.

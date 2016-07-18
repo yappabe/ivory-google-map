@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixResponseElement;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class DirectionsResponseElementTest extends \PHPUnit_Framework_TestCase
+class DistanceMatrixResponseElementTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrixResponse */
     protected $distanceMatrixResponseElement;

@@ -29,7 +29,6 @@ class UnitSystem
      */
     final private function __construct()
     {
-
     }
 
     /**
