@@ -100,7 +100,7 @@ class CoreExtensionHelper implements ExtensionHelperInterface
         $callback = null;
 
         if ($map->isAsync()) {
-            $callback = 'load_ivory_google_map';
+            $callback = 'function () { var ivory_google_map_loaders = window.ivory_google_map_loaders || []; for (var i in ivory_google_map_loaders) { ivory_google_map_loaders[i](); } }';
         }
 
         $output = array();
@@ -117,7 +117,7 @@ class CoreExtensionHelper implements ExtensionHelperInterface
     public function renderBefore(Map $map)
     {
         if ($map->isAsync()) {
-            return 'function load_ivory_google_map() {'.PHP_EOL;
+            return 'var ivory_google_map_loaders = ivory_google_map_loaders || []; ivory_google_map_loaders.push(function () {'.PHP_EOL;
         }
     }
 
@@ -127,7 +127,7 @@ class CoreExtensionHelper implements ExtensionHelperInterface
     public function renderAfter(Map $map)
     {
         if ($map->isAsync()) {
-            return '}'.PHP_EOL;
+            return '});'.PHP_EOL;
         }
     }
 

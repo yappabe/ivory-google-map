@@ -964,10 +964,6 @@ class MapHelper extends AbstractHelper
         $output[] = $this->renderJsAfter($map);
         $output[] = '</script>'.PHP_EOL;
 
-        if ($map->isAsync()) {
-            $output[] = $this->renderJsLibraries($map);
-        }
-
         return implode('', $output);
     }
 
