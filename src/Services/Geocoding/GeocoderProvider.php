@@ -46,17 +46,21 @@ class GeocoderProvider extends AbstractProvider implements ProviderInterface
     /** @var \Ivory\GoogleMap\Services\BusinessAccount */
     protected $businessAccount;
 
+    /** @var string */
+    protected $apiKey;
+
     /**
      * {@inheritdoc}
      */
-    public function __construct(HttpAdapterInterface $adapter, $locale = null)
+    public function __construct(HttpAdapterInterface $adapter, $apiKey = null, $locale = null)
     {
         parent::__construct($adapter, $locale);
 
         $this->setUrl('http://maps.googleapis.com/maps/api/geocode');
-        $this->setHttps(false);
+        $this->setHttps(true);
         $this->setFormat('json');
         $this->setXmlParser(new XmlParser());
+        $this->setApiKey($apiKey);
     }
 
     /**
@@ -139,6 +143,21 @@ class GeocoderProvider extends AbstractProvider implements ProviderInterface
         }
 
         $this->format = $format;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey(){
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -282,6 +301,7 @@ class GeocoderProvider extends AbstractProvider implements ProviderInterface
         }
 
         $httpQuery['sensor'] = $geocoderRequest->hasSensor() ? 'true' : 'false';
+        $httpQuery['key'] = $this->getApiKey();
 
         $url = sprintf('%s/%s?%s', $this->getUrl(), $this->getFormat(), http_build_query($httpQuery));
 
