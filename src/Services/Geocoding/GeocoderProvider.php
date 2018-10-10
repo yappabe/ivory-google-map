@@ -148,7 +148,8 @@ class GeocoderProvider extends AbstractProvider implements ProviderInterface
     /**
      * @return string
      */
-    public function getApiKey(){
+    public function getApiKey()
+    {
         return $this->apiKey;
     }
 
