@@ -71,8 +71,6 @@ class ApiHelper extends AbstractHelper
             $otherParameters['libraries'] = implode(',', $libraries);
         }
 
-        $otherParameters['language'] = $language;
-
         // Google Maps API warning: SensorNotRequired https://developers.google.com/maps/documentation/javascript/error-messages#sensor-not-required
         $otherParameters['sensor'] = json_encode((bool) $sensor);
 
