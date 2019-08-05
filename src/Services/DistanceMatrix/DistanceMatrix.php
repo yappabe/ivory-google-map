@@ -43,13 +43,18 @@ class DistanceMatrix extends AbstractService
         $this->setHttps(true);
     }
 
-    public function getApiKey(): string
+    /**
+     * @return string|null
+     */
+    public function getApiKey()
     {
         return $this->apiKey;
     }
 
-
-    public function setApiKey(string $apiKey)
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
     }
@@ -154,7 +159,6 @@ class DistanceMatrix extends AbstractService
         }
 
         $httpQuery['sensor'] = $distanceMatrixRequest->hasSensor() ? 'true' : 'false';
-
         $httpQuery['key'] = $this->getApiKey();
 
         $url = sprintf('%s/%s?%s', $this->getUrl(), $this->getFormat(), http_build_query($httpQuery));
