@@ -26,15 +26,37 @@ use Ivory\GoogleMap\Services\Base\Duration;
  */
 class DistanceMatrix extends AbstractService
 {
+    /** @var string */
+    protected $apiKey;
+
     /**
      * Creates a distance matrix service.
      *
      * @param HttpClient $client
      * @param MessageFactory $messageFactory The message factory.
      */
-    public function __construct(HttpClient $client, MessageFactory $messageFactory)
+    public function __construct(HttpClient $client, MessageFactory $messageFactory, $apiKey = null)
     {
         parent::__construct($client, $messageFactory, 'http://maps.googleapis.com/maps/api/distancematrix');
+
+        $this->apiKey = $apiKey;
+        $this->setHttps(true);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -137,6 +159,7 @@ class DistanceMatrix extends AbstractService
         }
 
         $httpQuery['sensor'] = $distanceMatrixRequest->hasSensor() ? 'true' : 'false';
+        $httpQuery['key'] = $this->getApiKey();
 
         $url = sprintf('%s/%s?%s', $this->getUrl(), $this->getFormat(), http_build_query($httpQuery));
 
